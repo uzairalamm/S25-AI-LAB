@@ -13,12 +13,12 @@ def chooseMode(temp, occupied, previousMode):
     return targetMode, True
 
 
-percepts = [(30, True), (30, True), (26, True), (20, True), (18, True), (18, False)]
+sensorData = [(30, True), (30, True), (26, True), (20, True), (18, True), (18, False)]
 
 previousMode = None
 
 
-for temp, occupied in percepts:
+for temp, occupied in sensorData:
     targetMode, sendCommand = chooseMode(temp, occupied, previousMode)
 
 
