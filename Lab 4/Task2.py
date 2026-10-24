@@ -1,4 +1,4 @@
-campusGraph = {
+graph = {
     "A": [("B", 2), ("C", 4)],
     "B": [("D", 2)],
     "C": [("E", 3)],
@@ -14,7 +14,7 @@ zeroHeuristic = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0, "G": 0}
 def findPathCost(pathList):
     totalCost = 0
     for position in range(len(pathList) - 1):
-        for nextNode, edgeCost in campusGraph[pathList[position]]:
+        for nextNode, edgeCost in graph[pathList[position]]:
             if nextNode == pathList[position + 1]:
                 totalCost = totalCost + edgeCost
     return totalCost
@@ -45,7 +45,7 @@ def runSearch(heuristicValues, searchName):
             print()
             return
 
-        for nextNode, edgeCost in campusGraph[currentNode]:
+        for nextNode, edgeCost in graph[currentNode]:
             if nextNode not in expandedNodes:
                 entryNumber = entryNumber + 1
                 newCostSoFar = costSoFar + edgeCost
