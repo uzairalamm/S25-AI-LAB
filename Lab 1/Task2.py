@@ -1,70 +1,36 @@
-def checkScholarship(score, documentsComplete,
-                     attendancePercent, enrollmentVerified):
+def checkApplciation(score, documents, projects, days):
+    problems = []
 
     if score < 70:
-        return "Hold", "Score is below 70"
+        problems.append("Score is below 70")
 
-    if not documentsComplete:
-        return "Hold", "Documents are incomplete"
+    if not documents:
+        problems.append("Docments are missing")
 
-    if attendancePercent < 75:
-        return "Hold", "Attendance is below 75%"
+    if projects < 70:
+        problems.append("Not enough academic projects")
+    if days > 7:
+        problems.append("Application was submitted late")
 
-    if not enrollmentVerified:
-        return "Hold", "Enrollment is not verified"
+    if len(problems) == 0:
+        return "Review", "All requirements met"
 
-    return "Review", "All conditions are satisfied"
+    return "Hold", ", ".join(problems)
 
 
-testCases = [
-    {
-        "name": "Case 1: All conditions pass",
-        "score": 80,
-        "documentsComplete": True,
-        "attendancePercent": 85,
-        "enrollmentVerified": True,
-        "expected": "Review"
-    },
-    {
-        "name": "Case 2: Attendance failure",
-        "score": 80,
-        "documentsComplete": True,
-        "attendancePercent": 60,
-        "enrollmentVerified": True,
-        "expected": "Review"
-    },
-    {
-        "name": "Case 3: Enrollment failure",
-        "score": 80,
-        "documentsComplete": True,
-        "attendancePercent": 85,
-        "enrollmentVerified": False,
-        "expected": "Hold"
-    },
-    {
-        "name": "Case 4: Score boundary",
-        "score": 70,
-        "documentsComplete": True,
-        "attendancePercent": 75,
-        "enrollmentVerified": True,
-        "expected": "Hold"
-    }
+applications = [
+    ("Student A", 85, True, 3, 4, "Review"),
+    ("Student B", 90, True, 1, 3, "Hold"),
+    ("Student C", 78, True, 4, 9, "Hold"),
+    ("Student D", 70, True, 2, 7, "Review"),
 ]
 
+for name, score, documents, projects, days, expected in applications:
+    actual, reason = checkApplciation(score, documents, projects, days)
 
-for test in testCases:
-    actual, reason = checkScholarship(
-        test["score"],
-        test["documentsComplete"],
-        test["attendancePercent"],
-        test["enrollmentVerified"]
-    )
-    print("\n", test["name"])
-    print("Input:", 
-          test["score"], 
-          test["documentsComplete"],
-          test["attendancePercent"], 
-          test["enrollmentVerified"])
-    print("Expected:", test["expected"])
-    print("Actual:", actual)
-    print("Reason:", reason)
+    print("\nApplicant: ", name)
+    print("Input: ", score, documents, projects, days)
+    print("Expected: ", expected)
+    print("Actual: ", actual)
+    print("reason: ", reason)
+    print("Test passed: ", expected == actual)
