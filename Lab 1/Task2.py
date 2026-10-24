@@ -1,5 +1,3 @@
-# Note: All thresholds (70 and 75) are synthetic lab assumptions, not real rules.
-
 def checkScholarship(score, documentsComplete,
                      attendancePercent, enrollmentVerified):
 
