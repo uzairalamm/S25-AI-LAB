@@ -47,7 +47,7 @@ testCases = [
         "documentsComplete": True,
         "attendancePercent": 75,
         "enrollmentVerified": True,
-        "expected": "Review"
+        "expected": "Hold"
     }
 ]
 
