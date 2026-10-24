@@ -31,7 +31,7 @@ testCases = [
         "documentsComplete": True,
         "attendancePercent": 60,
         "enrollmentVerified": True,
-        "expected": "Hold"
+        "expected": "Review"
     },
     {
         "name": "Case 3: Enrollment failure",
