@@ -1,4 +1,4 @@
-roads = {
+graph = {
     "A": {"B": 2, "C": 4},
     "B": {"D": 2},
     "C": {"E": 3},
@@ -35,7 +35,7 @@ def findRoute(h, method):
             print("Nodes checked: ", len(checked))
             return
 
-        for nextPlace, distance in roads[place].items():
+        for nextPlace, distance in graph[place].items():
             newCost = cost + distance
 
             if newCost < cheapest.get(nextPlace, float("inf")):
@@ -45,7 +45,7 @@ def findRoute(h, method):
 
 findRoute(heuristic, "A* Search")
 
-noHeuristic = {node: 0 for node in roads}
+noHeuristic = {node: 0 for node in graph}
 findRoute(noHeuristic, "Uniform Cost Search")
 
 modified = heuristic.copy()
