@@ -7,7 +7,7 @@ def checkApplciation(score, documents, projects, days):
     if not documents:
         problems.append("Docments are missing")
 
-    if projects < 70:
+    if projects < 7:
         problems.append("Not enough academic projects")
     if days > 7:
         problems.append("Application was submitted late")
@@ -33,4 +33,4 @@ for name, score, documents, projects, days, expected in applications:
     print("Expected: ", expected)
     print("Actual: ", actual)
     print("reason: ", reason)
-    print("Test passed: ", expected == actual)
+    
